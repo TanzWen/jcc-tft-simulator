@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>金铲铲阵容模拟器</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="aurora"><span></span><span></span><span></span></div>
+
+<header class="glass topbar">
+  <div class="brand">
+    <div class="logo">JCC</div>
+    <div>
+      <h1>阵容模拟器</h1>
+      <p id="season-meta">加载中…</p>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <div class="pill" id="board-count">0 / 10</div>
+    <div class="pill" id="board-cost">0 金</div>
+    <label class="pill stepper">人口
+      <button data-size="-1">−</button><span id="board-size">10</span><button data-size="1">+</button>
+    </label>
+    <button class="pill ghost" id="btn-comps" aria-expanded="false" aria-controls="comp-drawer">我的阵容</button>
+    <button class="pill ghost" id="btn-clear">清空</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="glass panel pool">
+    <div class="panel-head">
+      <div class="tabs" id="pool-tabs">
+        <button class="tab on" data-tab="heroes">英雄池</button>
+        <button class="tab" data-tab="items">装备库</button>
+      </div>
+      <input id="search" type="search" placeholder="搜索英雄 / 羁绊 / 技能" />
+    </div>
+
+    <div class="pool-view" data-view="heroes">
+      <div class="filters">
+        <div class="chips" id="cost-filters"></div>
+        <div class="chips" id="trait-filters"></div>
+      </div>
+      <div class="hero-grid" id="hero-grid"></div>
+    </div>
+
+    <div class="pool-view" data-view="items" hidden>
+      <p class="hint equip-hint" id="equip-hint">先在右侧阵容里点选一个英雄，再点击装备为他装上（每人 3 件）</p>
+      <div class="filters">
+        <div class="chips" id="equip-filters"></div>
+      </div>
+      <div class="equip-grid" id="equip-grid"></div>
+    </div>
+  </section>
+
+  <section class="glass panel board">
+    <div class="panel-head">
+      <h2>当前阵容</h2>
+      <span class="hint">点击选中配装，点右上角 ✕ 移出</span>
+    </div>
+    <div class="board-grid" id="board-grid"></div>
+    <div class="equip-bar" id="equip-bar" hidden></div>
+
+    <div class="panel-head">
+      <h2>阵容站位</h2>
+      <span class="hint" id="hex-hint">拖动英雄到格子，格子之间可互换</span>
+    </div>
+    <div class="hex-board" id="hex-board"></div>
+
+    <div class="panel-head">
+      <h2>装备基础属性</h2>
+      <span class="hint">全队装备的 basicDesc 汇总</span>
+    </div>
+    <div class="stat-list" id="equip-stats"></div>
+
+    <div class="panel-head">
+      <h2>激活羁绊</h2>
+      <span class="hint" id="trait-summary"></span>
+    </div>
+    <div class="trait-list" id="active-traits"></div>
+
+    <div class="panel-head">
+      <h2>推荐补强</h2>
+      <span class="hint">加入后可推进羁绊档位</span>
+    </div>
+    <div class="suggest-list" id="suggestions"></div>
+  </section>
+</main>
+
+<div class="drawer-mask" id="comp-mask" hidden></div>
+<aside class="glass drawer" id="comp-drawer" hidden aria-label="我的阵容">
+  <div class="drawer-head">
+    <h2>我的阵容</h2>
+    <button class="drawer-close" id="btn-comp-close" aria-label="关闭">✕</button>
+  </div>
+  <p class="hint" id="comp-hint">保存后可随时载入、改名或删除</p>
+  <div class="comp-save">
+    <input id="comp-name" type="text" maxlength="40" placeholder="给这套阵容起个名字" />
+    <button class="pill" id="btn-comp-save">保存为新阵容</button>
+    <button class="pill ghost" id="btn-comp-update" hidden>覆盖当前存档</button>
+  </div>
+  <div class="comp-list" id="comp-list"></div>
+</aside>
+
+<aside class="glass detail" id="detail" hidden></aside>
+<script src="/app.js"></script>
+</body>
+</html>

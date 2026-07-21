@@ -1,0 +1,41 @@
+# 操作系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python 缓存、虚拟环境与构建产物
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+.venv/
+venv/
+
+# 本地配置与方案文档
+.env
+.env.*
+!.env.example
+docs/
+
+# 采集产物可由脚本重新生成，不提交仓库。
+data/raw/
+data/processed/
+data/assets/
+data/*.db
+data/*.db-*
+data/*.sqlite
+data/*.sqlite-*
+data/*.sqlite3
+data/*.sqlite3-*

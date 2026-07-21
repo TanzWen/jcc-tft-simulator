@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jcc-data"
+version = "0.1.0"
+description = "金铲铲之战官网数据采集与阵容分析"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+jcc = "jcc.cli:main"
+jcc-web = "jcc.web.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"jcc.web" = ["static/*"]
